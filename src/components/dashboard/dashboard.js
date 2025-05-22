@@ -22,6 +22,10 @@ const Dashboard = ( ) =>{
         navigate(`/user/${userId}`);
     }
     
+
+    const handleDelete = (userId)=>{
+        navigate(`/user/${userId}`);
+    }
     return(
         <>
           <Container className="mt-5">
@@ -52,12 +56,12 @@ const Dashboard = ( ) =>{
                                             >
                                                 Update
                                             </Button>{" "}
-                                            {/* <Button
+                                            <Button
                                                 variant="danger"
                                                 onClick={() => handleDelete(user._id)}
                                             >
                                                 Delete
-                                            </Button> */}
+                                            </Button>
                                         </td>
                                     </tr>
                                 ))
