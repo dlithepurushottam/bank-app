@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = ( ) =>{
     const [users, setUsers] = useState([]);
     const navigate =useNavigate();
-    useEffect(()=>{
-        const fetchUsers =async()=>{
+    
+    const fetchUsers =async()=>{
             try{
                 const response = await fetch("http://localhost:5000/api/user");
                 const data = await response.json();
@@ -15,17 +15,28 @@ const Dashboard = ( ) =>{
                 console.error("error while fetching details :", error.message);
             }
         }
+
+    useEffect(()=>{
         fetchUsers();
     }, []);
 
     const handleUpdate = (userId)=>{
         navigate(`/user/${userId}`);
     }
-    
 
-    const handleDelete = (userId)=>{
-        navigate(`/user/${userId}`);
+    const handleDelete =async (userId) =>{
+       try{
+        const response = await fetch(`http://localhost:5000/api/user/${userId}`,{
+            method:"DELETE"
+       });
+        if(response.ok){
+            fetchUsers();
+        }
+       }catch(error){
+        console.error("Error while deleting user :", error.message);
+       }
     }
+    
     return(
         <>
           <Container className="mt-5">

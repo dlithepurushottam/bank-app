@@ -41,7 +41,7 @@ const PostUser = () => {
 
   return (
     <div className="center-form">
-      <h1>Post New user</h1>
+      <h1>Add New user</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
@@ -77,7 +77,7 @@ const PostUser = () => {
         </Form.Group>
 
         <Button variant="dark" type="submit" className="w-100">
-          Post User
+          Add User
         </Button>
       </Form>
     </div>
